@@ -96,6 +96,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ro.vendor.qti.core_ctl_min_cpu=2 \
 ro.vendor.qti.core_ctl_max_cpu=4
 
+# Display cutout
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.potato.has_cutout=true
+
 # Dirac - D2AO-1004
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.dirac.afm.mode=global \
