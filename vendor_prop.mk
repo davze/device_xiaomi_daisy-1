@@ -5,6 +5,8 @@ dalvik.vm.image-dex2oat-filter=speed
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
+ro.config.media_vol_steps=20 \
+ro.config.vc_call_vol_steps=20 \
 af.fast_track_multiplier=1 \
 audio.deep_buffer.media=true \
 audio.offload.min.duration.secs=30 \
