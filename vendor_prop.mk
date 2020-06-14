@@ -98,10 +98,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ro.vendor.qti.core_ctl_min_cpu=2 \
 ro.vendor.qti.core_ctl_max_cpu=4
 
-# Display cutout
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.potato.has_cutout=true
-
 # Dirac - D2AO-1004
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.dirac.afm.mode=global \
@@ -324,4 +320,5 @@ ro.vendor.qti.sys.fw.empty_app_percent=50 \
 ro.vendor.qti.sys.fw.trim_cache_percent=100 \
 ro.vendor.qti.sys.fw.trim_empty_percent=100 \
 ro.vendor.qti.sys.fw.trim_enable_memory=2147483648 \
-ro.vendor.qti.sys.fw.use_trim_settings=true
+ro.vendor.qti.sys.fw.use_trim_settings=true \
+persist.device_config.runtime_native.usap_pool_enabled=true
