@@ -8,7 +8,7 @@
 $(call inherit-product, vendor/xiaomi/daisy/daisy-vendor.mk)
 
 # Setup dalvik vm configs
-$(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # Enable Google Play System Update
 $(call inherit-product, vendor/google-customization/config.mk)
@@ -477,4 +477,5 @@ PRODUCT_BOOT_JARS += \
 
 # Verity
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/7824900.sdhci/by-name/system
+PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/soc/7824900.sdhci/by-name/vendor
 $(call inherit-product, build/target/product/verity.mk)
