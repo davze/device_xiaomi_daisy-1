@@ -61,12 +61,16 @@ ro.bluetooth.hfp.ver=1.7 \
 ro.qualcomm.bt.hci_transport=smd \
 persist.vendor.bt.aac_frm_ctl.enabled=true \
 
+# Camera HAL Buffer Management
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.camera.managebuffer.enable=1
+
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
 vidc.enc.dcvs.extra-buff-count=2 \
 media.camera.ts.monotonic=1 \
 persist.vendor.camera.display.lmax=1280x720 \
-persist.vendor.camera.display.umax=1920x108 \
+persist.vendor.camera.display.umax=1920x1080 \
 vendor.camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp \
 vendor.camera.lowpower.record.enable=1 \
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.huaqin.factory,com.mi.AutoTest \
@@ -79,11 +83,22 @@ persist.vendor.camera.gyro.disable=0 \
 persist.vendor.camera.isp.clock.optmz=0 \
 persist.vendor.camera.stats.test=5 \
 persist.vendor.camera.CDS=off \
-persist.camera.HAL3.enabled=1
+persist.vendor.camera.video.CDS=off \
+camera.lowpower.record.enable=1 \
+camera.disable_zsl_mode=true 
+
+#Additional prop camera
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.camera.eis.enable=1 \
+persist.camera.max.previewfps=60 \
+persist.camera.HAL3.enabled=1 \
+persist.vendor.camera.max.previewfps=60 \
+persist.vendor.camera.HAL3.enabled=1
 
 # Cne
 PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.cne.feature=1
+persist.vendor.cne.feature=1 \
+vendor.display.enable_default_color_mode=1 \
 
 # Coresight
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -121,7 +136,18 @@ ro.vendor.display.cabl=2 \
 sdm.debug.disable_skip_validate=1 \
 vendor.display.enable_default_color_mode=1 \
 vendor.display.disable_skip_validate=1 \
-vendor.gralloc.enable_fb_ubwc=1
+vendor.gralloc.enable_fb_ubwc=1\
+debug.egl.hw=0 \
+debug.mdpcomp.logs=0 \
+debug.sf.hw=0 \
+debug.sf.latch_unsignaled=1 \
+debug.cpurend.vsync=false \
+debug.sf.recomputecrop=0 \
+persist.debug.wfd.enable=1 \
+persist.hwc.enable_vds=1 \
+ro.sf.lcd_density=420 \
+persist.vendor.max.brightness=475 \
+debug.hwui.renderer=opengl
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -143,20 +169,6 @@ ro.frp.pst=/dev/block/bootdevice/by-name/config
 # Keystore
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.hardware.keystore_desede=true
-
-# HWUI
-PRODUCT_PROPERTY_OVERRIDES += \
-ro.hwui.texture_cache_size=72 \
-ro.hwui.layer_cache_size=48 \
-ro.hwui.r_buffer_cache_size=8 \
-ro.hwui.path_cache_size=32 \
-ro.hwui.gradient_cache_size=1 \
-ro.hwui.drop_shadow_cache_size=6 \
-ro.hwui.texture_cache_flushrate=0.4 \
-ro.hwui.text_small_cache_width=1024 \
-ro.hwui.text_small_cache_height=1024 \
-ro.hwui.text_large_cache_width=2048 \
-ro.hwui.text_large_cache_height=1024
 
 # IMS debug
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -215,13 +227,19 @@ ro.vendor.qti.va_aosp.support=1
 # QTI Performance
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.vendor.at_library=true \
+ro.vendor.gt_library=libqti-gt.so \
+vendor.enable_prefetch=1 \
 vendor.iop.enable_uxe=1 \
 vendor.perf.iop_v3.enable=true \
 vendor.perf.iop_v3.enable.debug=false \
-vendor.enable.prefetch=false \
-vendor.iop.enable_prefetch_ofr=false \
+vendor.iop.enable_prefetch_ofr=1 \
 vendor.perf.gestureflingboost.enable=true \
-vendor.perf.workloadclassifier.enable=true
+vendor.perf.workloadclassifier.enable=true \
+persist.vendor.qti.games.gt.prof=1
+
+# Recovery
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.sys.recovery_update=true
 
 # Rescue party
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -273,9 +291,7 @@ debug.sf.early_app_phase_offset_ns=1500000 \
 debug.sf.early_gl_phase_offset_ns=3000000 \
 debug.sf.early_gl_app_phase_offset_ns=15000000 \
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
-ro.surface_flinger.max_virtual_display_dimension=4096
-
-PRODUCT_PROPERTY_OVERRIDES += \
+ro.surface_flinger.max_virtual_display_dimension=4096 \
 debug.sf.disable_backpressure=1
 
 # Thermal configs path
