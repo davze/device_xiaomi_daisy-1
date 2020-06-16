@@ -1,8 +1,8 @@
 # Audio
-persist.vendor.audio.fluence.speaker=true
-persist.vendor.audio.fluence.voicecall=true
-persist.vendor.audio.fluence.voicerec=false
-ro.vendor.audio.sdk.fluencetype=fluence
+persist.audio.fluence.speaker=true
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+ro.audio.sdk.fluencetype=none
 
 # Bluetooth SOC type
 persist.vendor.btstack.enable.splita2dp=false
@@ -34,3 +34,6 @@ mmp.enable.3g2=true
 # WFD
 persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
+
+# Zygote preforking
+persist.device_config.runtime_native.usap_pool_enabled=true
