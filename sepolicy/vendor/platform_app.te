@@ -14,3 +14,4 @@ allow platform_app sysfs_kgsl:dir search;
 allow platform_app sysfs_kgsl:lnk_file read;
 allow platform_app system_app_data_file:dir getattr;
 allow platform_app vendor_default_prop:file { read open };
+allow platform_app time_daemon:unix_stream_socket { connectto };

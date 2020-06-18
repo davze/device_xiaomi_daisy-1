@@ -1,4 +1,4 @@
-dontaudit thermal-engine self:capability dac_override;
+allow thermal-engine  self:capability dac_override; 
 
 type thermal_data_file, file_type, data_file_type;
 type_transition thermal-engine system_data_file:dir thermal_data_file;

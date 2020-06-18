@@ -54,19 +54,16 @@ ro.bluetooth.hfp.ver=1.7 \
 persist.vendor.bt.aac_frm_ctl.enabled=true \
 ro.qualcomm.bt.hci_transport=smd \
 
-# Camera HAL Buffer Management
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.camera.managebuffer.enable=1
-
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
 vidc.enc.dcvs.extra-buff-count=2 \
 media.camera.ts.monotonic=1 \
 persist.vendor.camera.display.lmax=1280x720 \
 persist.vendor.camera.display.umax=1920x1080 \
-vendor.camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp \
+camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp,org.lineageos.snap,org.codeaurora.snapcam \
+vendor.camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp,org.lineageos.snap,org.codeaurora.snapcam \
 vendor.camera.lowpower.record.enable=1 \
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,com.huaqin.factory,com.mi.AutoTest \
+vendor.camera.aux.packagelist=org.org.codeaurora.snapcam,com.android.camera,com.huaqin.factory,com.mi.AutoTest \
 vendor.camera.aux.packagelist2=com.android.systemui,com.huaqin.cameraautotest,com.huaqin.runtime \
 vendor.camera.aux.packageblacklist=com.discord \
 persist.vendor.qti.telephony.vt_cam_interface=2 \
@@ -76,17 +73,29 @@ persist.vendor.camera.gyro.disable=0 \
 persist.vendor.camera.isp.clock.optmz=0 \
 persist.vendor.camera.stats.test=5 \
 persist.vendor.camera.CDS=off \
-persist.vendor.camera.video.CDS=off \
-camera.lowpower.record.enable=1 \
-camera.disable_zsl_mode=true 
-
-#Additional prop camera
-PRODUCT_PROPERTY_OVERRIDES += \
+persist.camera.HAL3.enabled=1 \
+persist.vendor.camera.HAL3.enabled=1 \
 persist.camera.eis.enable=1 \
 persist.camera.max.previewfps=60 \
-persist.camera.HAL3.enabled=1 \
 persist.vendor.camera.max.previewfps=60 \
-persist.vendor.camera.HAL3.enabled=1
+persist.vendor.camera.preview.ubwc=0 \
+persist.vendor.camera.isp.turbo=1 \
+persist.vendor.camera.exif.make=Xiaomi \
+persist.vendor.camera.exif.model=Mi A2 Lite \
+persist.vendor.camera.expose.aux=1 \
+persist.vendor.camera.fdvideo=1 \
+persist.vendor.camera.awb.sync=2 \
+persist.vendor.flash.low.lux=390 \
+persist.vendor.flash.light.lux=340 \
+persist.vendor.imx376_ofilm.low.lux=310 \
+persist.vendor.imx376_ofilm.light.lux=280 \
+persist.vendor.imx376_sunny.low.lux=310 \
+persist.vendor.imx376_sunny.light.lux=280 \
+persist.vendor.ov13855_sunny.low.lux=385 \
+persist.vendor.ov13855_sunny.light.lux=370 \
+persist.vendor.s5k3l8_ofilm.low.lux=379 \
+persist.vendor.s5k3l8_ofilm.light.lux=367 \
+persist.vendor.camera.ltm.overlap=13
 
 # Cne
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -113,32 +122,16 @@ persist.dirac.poolsize=3
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
-debug.egl.hw=0 \
-debug.enable.sglscale=1 \
-debug.gralloc.enable_fb_ubwc=1 \
-debug.mdpcomp.logs=0 \
-debug.sf.hw=0 \
-debug.sf.latch_unsignaled=1 \
-debug.cpurend.vsync=false \
-debug.sf.recomputecrop=0 \
-dev.pm.dyn_samplingrate=1 \
-persist.debug.wfd.enable=1 \
-persist.demo.hdmirotationlock=false \
-persist.hwc.enable_vds=1 \
-persist.hwc.mdpcomp.enable=true \
-persist.sys.wfd.virtual=0 \
-vendor.video.disable.ubwc=1\
-vendor.gralloc.disable_wb_ubwc=1 \
-persist.sys.wfd.nohdcp=1 \
+debug.hwui.use_buffer_age=false \
+debug.sf.enable_hwc_vds=1 \
+debug.sf.hw=1 \
 ro.opengles.version=196610 \
-ro.qualcomm.cabl=0 \
-ro.sf.lcd_density=420 \
-ro.vendor.display.cabl=2 \
-sdm.debug.disable_skip_validate=1 \
+vendor.display.disable_partial_split=1 \
+vendor.display.disable_rotator_downscale=1 \
 vendor.display.disable_skip_validate=1 \
-vendor.display.enable_default_color_mode=1 \
+vendor.display.enable_default_color_mode=0 \
+vendor.display.perf_hint_window=50 \
 vendor.gralloc.enable_fb_ubwc=1 \
-persist.vendor.max.brightness=475 \
 debug.hwui.renderer=opengl
 
 # DRM
@@ -216,18 +209,10 @@ ro.vendor.qti.sys.fw.bservice_enable=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 ro.vendor.qti.va_aosp.support=1
 
-# QTI Performance
+# IOP properties
 PRODUCT_PROPERTY_OVERRIDES += \
-ro.vendor.at_library=true \
-ro.vendor.gt_library=libqti-gt.so \
-vendor.enable_prefetch=1 \
 vendor.iop.enable_uxe=1 \
-vendor.perf.iop_v3.enable=true \
-vendor.perf.iop_v3.enable.debug=false \
-vendor.iop.enable_prefetch_ofr=1 \
-vendor.perf.gestureflingboost.enable=true \
-vendor.perf.workloadclassifier.enable=true \
-persist.vendor.qti.games.gt.prof=1
+vendor.perf.iop_v3.enable=true
 
 # Recovery
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -282,24 +267,41 @@ persist.vendor.sys.cnd.iwlan=1 \
 persist.vendor.cne.logging.qxdm=3974
 
 # SurfaceFlinger
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 ro.surface_flinger.protected_contents=true \
+ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
+ro.surface_flinger.max_virtual_display_dimension=4096 \
+ro.surface_flinger.max_virtual_display_dimension=4096 \
+ro.surface_flinger.vsync_event_phase_offset_ns=2000000 \
+ro.surface_flinger.vsync_sf_event_phase_offset_ns=6000000 \
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
+PRODUCT_PROPERTY_OVERRIDES += \
 debug.sf.early_phase_offset_ns=1500000 \
 debug.sf.early_app_phase_offset_ns=1500000 \
 debug.sf.early_gl_phase_offset_ns=3000000 \
 debug.sf.early_gl_app_phase_offset_ns=15000000 \
-ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
-ro.surface_flinger.max_virtual_display_dimension=4096 \
-debug.sf.disable_backpressure=1
+debug.sf.latch_unsignaled=1 \
+debug.sf.disable_backpressure=1 \
+debug.sf.enable_gl_backpressure=1
+
+# The default sf phase offset is set to 6ms, to avoid it be included into next
+# vsync threshold, set high fps early sf and next vsync threshold phase offset
+# to 6.1ms, which is bigger than all sf phase offsets in normal frame rate.
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.sf.high_fps_early_phase_offset_ns=6100000 \
+    debug.sf.high_fps_early_gl_phase_offset_ns=9000000 \
+    debug.sf.phase_offset_threshold_for_next_vsync_ns=6100000
+
+# Time Services
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.timed.enable=true \
+persist.vendor.delta_time.enable=true \
+persist.delta_time.enable=true
 
 # Thermal configs path
 PRODUCT_PROPERTY_OVERRIDES += \
 sys.thermal.data.path=/data/vendor/thermal/
-
-# Time Services
-PRODUCT_PROPERTY_OVERRIDES += \
-persist.vendor.delta_time.enable=true \
-persist.delta_time.enable=true
 
 # Tcp
 PRODUCT_PROPERTY_OVERRIDES += \
