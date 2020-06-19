@@ -54,48 +54,99 @@ ro.bluetooth.hfp.ver=1.7 \
 persist.vendor.bt.aac_frm_ctl.enabled=true \
 ro.qualcomm.bt.hci_transport=smd \
 
+# Boot
+PRODUCT_PROPERTY_OVERRIDES += \
+sys.vendor.shutdown.waittime=500
+
+# camera hal buffer management
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.camera.managebuffer.enable=1
+
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-vidc.enc.dcvs.extra-buff-count=2 \
-media.camera.ts.monotonic=1 \
 persist.vendor.camera.display.lmax=1280x720 \
 persist.vendor.camera.display.umax=1920x1080 \
-camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp,org.lineageos.snap,org.codeaurora.snapcam \
-vendor.camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp,org.lineageos.snap,org.codeaurora.snapcam \
-vendor.camera.lowpower.record.enable=1 \
-vendor.camera.aux.packagelist=org.org.codeaurora.snapcam,com.android.camera,com.huaqin.factory,com.mi.AutoTest \
-vendor.camera.aux.packagelist2=com.android.systemui,com.huaqin.cameraautotest,com.huaqin.runtime \
-vendor.camera.aux.packageblacklist=com.discord \
-persist.vendor.qti.telephony.vt_cam_interface=2 \
+camera.lowpower.record.enable=1 \
+media.camera.ts.monotonic=1 \
+persist.camera.CDS=off \
+persist.vendor.camera.CDS=off \
+persist.vendor.camera.video.CDS=off \
+persist.camera.dual.camera=0 \
 persist.vendor.camera.dual.camera=0 \
-persist.vendor.camera.eis.enable=1 \
+persist.camera.gyro.disable=0 \
 persist.vendor.camera.gyro.disable=0 \
 persist.vendor.camera.isp.clock.optmz=0 \
 persist.vendor.camera.stats.test=5 \
-persist.vendor.camera.CDS=off \
-persist.camera.HAL3.enabled=1 \
+persist.vendor.qti.telephony.vt_cam_interface=2 \
+vidc.enc.dcvs.extra-buff-count=2 \
+vendor.camera.lowpower.record.enable=1 \
+camera.disable_zsl_mode=true 
+
+#Additional prop camera
+PRODUCT_PROPERTY_OVERRIDES += \
 persist.vendor.camera.HAL3.enabled=1 \
+persist.vendor.camera.eis.enable=1 \
+persist.camera.HAL3.enabled=1 \
 persist.camera.eis.enable=1 \
 persist.camera.max.previewfps=60 \
 persist.vendor.camera.max.previewfps=60 \
+persist.camera.isp.clock.optmz=0 \
+persist.camera.stats.test=5 \
+
+# AF wait AEC settle count
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.config.calibration_cad=/vendor/etc/calibration_cad.xml \
+persist.bokeh.switch.lux=290 \
+persist.camera.auxswitch.threshold=330 \
+persist.vendor.camera.auxswitch.threshold=330 \
+persist.camera.mainswitch.threshold=419 \
+persist.vendor.camera.mainswitch.threshold=419 \
+persist.camera.preview.ubwc=0 \
 persist.vendor.camera.preview.ubwc=0 \
+persist.vendor.camera.stats.test=0 \
+persist.camera.depth.focus.cb=0 \
+persist.vendor.camera.depth.focus.cb=0 \
+persist.camera.linkpreview=0 \
+persist.vendor.camera.linkpreview=0 \
+persist.camera.isp.turbo=1 \
 persist.vendor.camera.isp.turbo=1 \
-persist.vendor.camera.exif.make=Xiaomi \
-persist.vendor.camera.exif.model=Mi A2 Lite \
-persist.vendor.camera.expose.aux=1 \
-persist.vendor.camera.fdvideo=1 \
+persist.camera.awb.sync=2 \
 persist.vendor.camera.awb.sync=2 \
-persist.vendor.flash.low.lux=390 \
-persist.vendor.flash.light.lux=340 \
-persist.vendor.imx376_ofilm.low.lux=310 \
-persist.vendor.imx376_ofilm.light.lux=280 \
-persist.vendor.imx376_sunny.low.lux=310 \
-persist.vendor.imx376_sunny.light.lux=280 \
-persist.vendor.ov13855_sunny.low.lux=385 \
-persist.vendor.ov13855_sunny.light.lux=370 \
-persist.vendor.s5k3l8_ofilm.low.lux=379 \
-persist.vendor.s5k3l8_ofilm.light.lux=367 \
-persist.vendor.camera.ltm.overlap=13
+persist.camera.expose.aux=1 \
+persist.vendor.camera.expose.aux=1 \
+persist.camera.is_type=4 \
+persist.vendor.camera.is_type=4 \
+persist.camera.is_mode=4 \
+persist.vendor.camera.is_mode=4 \
+persist.vendor.camera.llv.fuse=2 \
+persist.camera.llv.fuse=2
+
+# Expose aux camera for below packages
+PRODUCT_PROPERTY_OVERRIDES += \
+camera.aux.packagelist=org.lineageos.snap,com.google.android.GoogleCameraWide,com.android.camera \
+vendor.camera.aux.packagelist=org.lineageos.snap,com.google.android.GoogleCameraWide,com.android.camera \
+vendor.camera.aux.packagelist2=com.android.systemui,com.huaqin.cameraautotest,com.huaqin.runtime \
+vendor.camera.aux.packageblacklist=com.discord
+
+# HAL1
+PRODUCT_PROPERTY_OVERRIDES += \
+vendor.camera.hal1.packagelist=com.skype.raider,com.google.android.talk,com.whatsapp
+
+#Temporal Noise Reduction
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.camera.tnr_cds=1 \
+persist.vendor.camera.tnr_cds=1 \
+persist.camera.tnr.video=1 \
+persist.vendor.camera.tnr.video=1 \
+persist.camera.tnr.preview=1 \
+persist.vendor.camera.tnr.preview=1 \
+persist.camera.tnr.snapshot=1 \
+persist.vendor.camera.tnr.snapshot=1 \
+persist.camera.llnoise=1 \
+persist.tnr.process.plates=1 \
+persist.vendor.tnr.process.plates=1 \
+persist.denoise.process.plates=1 \
+persist.vendor.denoise.process.plates=1
 
 # Cne
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -321,7 +372,7 @@ wifi.interface=wlan0
 
 # Zygote preforking
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.device_config.runtime_native.usap_pool_enabled=true
+persist.device_config.runtime_native.usap_pool_enabled=true
 
 # Unsorted properties
 PRODUCT_PROPERTY_OVERRIDES += \
