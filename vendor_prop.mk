@@ -68,6 +68,7 @@ persist.vendor.camera.display.lmax=1280x720 \
 persist.vendor.camera.display.umax=1920x1080 \
 camera.lowpower.record.enable=1 \
 media.camera.ts.monotonic=1 \
+persist.camera.video.CDS=off \
 persist.camera.CDS=off \
 persist.vendor.camera.CDS=off \
 persist.vendor.camera.video.CDS=off \
@@ -260,10 +261,16 @@ ro.vendor.qti.sys.fw.bservice_enable=true
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 ro.vendor.qti.va_aosp.support=1
 
-# IOP properties
+# QTI Performance
 PRODUCT_PROPERTY_OVERRIDES += \
+ro.vendor.at_library=true \
 vendor.iop.enable_uxe=1 \
-vendor.perf.iop_v3.enable=true
+vendor.perf.iop_v3.enable=true \
+vendor.perf.iop_v3.enable.debug=false \
+vendor.enable.prefetch=false \
+vendor.iop.enable_prefetch_ofr=false \
+vendor.perf.gestureflingboost.enable=true \
+vendor.perf.workloadclassifier.enable=true
 
 # Recovery
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -8,7 +8,6 @@ ro.audio.sdk.fluencetype=none
 persist.vendor.btstack.enable.splita2dp=false
 
 # DPM
-PRODUCT_PROPERTY_OVERRIDES += \
 persist.vendor.dpm.feature=0
 
 # LMKD

@@ -342,11 +342,6 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
-    
-# Perf
-PRODUCT_BOOT_JARS += \
-    QPerformance \
-    UxPerformance 
  
 # Power
 PRODUCT_PACKAGES += \
