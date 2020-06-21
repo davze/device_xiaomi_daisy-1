@@ -136,17 +136,11 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.camera.postproc@1.0 \
-    android.frameworks.cameraservice.common@2.0 \
-    android.frameworks.cameraservice.device@2.0 \
-    android.frameworks.cameraservice.service@2.0 \
-    android.frameworks.displayservice@1.0_32 \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     android.hardware.camera.provider@2.5 \
     android.hardware.camera.device@3.4 \
     vendor.qti.hardware.camera.device@1.0 \
-    libxml2 \
     Snap
 
 # Codec2
@@ -246,10 +240,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ims-ext-common \
     ims_ext_common.xml
-    
-# init.d support
-PRODUCT_PACKAGES += \
-    sysinit
     
 # Input
 PRODUCT_COPY_FILES += \
